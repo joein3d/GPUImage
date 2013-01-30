@@ -242,9 +242,9 @@ void GPUImageCreateResizedSampleBuffer(CVPixelBufferRef cameraFrame, CGSize fina
         CGSize scaledImageSizeToFitOnGPU = [GPUImageOpenGLESContext sizeThatFitsWithinATextureForSize:sizeOfPhoto];
         if (!CGSizeEqualToSize(sizeOfPhoto, scaledImageSizeToFitOnGPU))
         {
-            CMSampleBufferRef sampleBuffer;
+            CMSampleBufferRef sampleBuffer = NULL;
             
-            if (CVPixelBufferGetPlaneCount(cameraFrame) > 0)
+            if ( CVPixelBufferGetPlaneCount(cameraFrame) > 0)
             {
                 NSAssert(NO, @"Error: no downsampling for YUV input in the framework yet");
             }
